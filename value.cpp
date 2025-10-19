@@ -4,6 +4,7 @@
 #include <functional>
 #include <unordered_set>
 #include <cstdint>
+#include <cmath>
 
 using namespace std;
 
@@ -49,6 +50,44 @@ class Value {
     }
     Value operator*(Value& V) {
       return Value(this->data * V.data, vector<Value>({*this, V}), "*");
+    }
+    Value operator-(Value& V) {
+      return Value(this->data - V.data, vector<Value>({*this, V}), "-");
+    }
+    Value operator/(Value& V) {
+      return Value(this->data / V.data, vector<Value>({*this, V}), "/");
+    }
+
+    operator int() const { return this->data; }
+    operator double() const { return (double) this->data; }
+    Value exp(int n_iterations=5) {
+      double sum = 1.0;
+      double term = 1.0;
+      for (int i = 1; i <= n_iterations; ++i) {
+        term *= (double)this->data / i;
+        sum += term;
+      }
+      Value result((int)(sum));
+      return result;
+    }
+    Value tanh(void) {
+      Value x(0);
+      Value c1(2, "c1");
+      Value c2(1, "c2");
+      Value o(0, "o");
+      Value h1(0, "h1");
+      Value h2(0, "h2");
+
+      x = this->data;
+      h1 = c1 * x;
+      h1 = h1.exp();
+      h1 = h1 - c2;
+      h2 = c1 * x;
+      h2 = h2.exp();
+      h2 = h2 + c2;
+      o = h1/h2;
+      Value t(ceil(o.data), {*this}, "tanh");
+      return t;
     }
     // Custom assignment operator to preserve the label
     Value& operator=(const Value& other) {
@@ -112,6 +151,7 @@ class Value {
         ss << "}\n";
         return ss.str();
     }
+    /*
     friend Value backpropagation(Value V) {
       V.grad = 1;
 
@@ -135,5 +175,7 @@ class Value {
 
       return Value(0);
     }
+    */
 };
+
 

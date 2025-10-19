@@ -5,21 +5,24 @@ using namespace std;
 
 int main() {
   
-  Value a(2, "a");
-  Value b(-3, "b");
-  Value c(10, "c");
+  Value x1(2, "x1");
+  Value x2(0, "x2");
 
+  Value w1(-3, "w1");
+  Value w2(1, "w2");
 
-  Value e(0, "e"), d(0, "d");
-  e = a*b;// e.label = "e";
-  d = e + c;// d.label = "d"; 
-  Value f(-2, "f");
-  Value L(0, "L");
-  L = d * f;
-  list.append(pair<Value> L.getChildren())
-  //
-  //dfdL = L.children[0].grad = L - children[0].data
-  //dddL = L.children[1].grad = L - children[1].data
+  Value b(8, "b");
 
-  cout << graphviz(L) << endl;
+  Value h1(0, "h1");
+  Value h2(0, "h2");
+  h1 = x1*w1;
+  h2 = x2*w2;
+
+  Value n(0, "n");
+  n = h1 + h2 + b;
+
+  Value o(0, "o");
+  o = n.tanh();
+
+  cout << graphviz(o) << endl;
 }
