@@ -1,0 +1,26 @@
+digraph G {
+  rankdir=LR;
+  node [shape=record, fontname="Consolas", fontsize=10, style=filled, fillcolor="#f9f9f9", color="#555555"];
+  edge [color="#666666"];
+
+  n140728820099408 [label="{ L | data: -8 | grad: 0 }"];
+  n140728820099408_op [label="*", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
+  n140728820099408_op -> n140728820099408;
+  n94392240543280 -> n140728820099408_op;
+  n94392240543280 [label="{ d | data: 4 | grad: 0 }"];
+  n94392240543280_op [label="+", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
+  n94392240543280_op -> n94392240543280;
+  n94392240543504 -> n94392240543280_op;
+  n94392240543504 [label="{ e | data: -6 | grad: 0 }"];
+  n94392240543504_op [label="*", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
+  n94392240543504_op -> n94392240543504;
+  n94392240543056 -> n94392240543504_op;
+  n94392240543056 [label="{ a | data: 2 | grad: 0 }"];
+  n94392240543160 -> n94392240543504_op;
+  n94392240543160 [label="{ b | data: -3 | grad: 0 }"];
+  n94392240543608 -> n94392240543280_op;
+  n94392240543608 [label="{ c | data: 10 | grad: 0 }"];
+  n94392240543384 -> n140728820099408_op;
+  n94392240543384 [label="{ f | data: -2 | grad: 0 }"];
+}
+
