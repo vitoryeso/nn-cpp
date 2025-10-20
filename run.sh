@@ -1,5 +1,5 @@
-g++ -o main_value main_value.cpp value.cpp
+g++ -o bin/main_value main_value.cpp value.cpp
 
-./main_value > graph.dot
+./bin/main_value > graph.dot
 
 python3 plot.py

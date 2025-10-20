@@ -1,36 +1,37 @@
+tanh(2) = 6.10352e-05
 digraph G {
   rankdir=LR;
   node [shape=record, fontname="Consolas", fontsize=10, style=filled, fillcolor="#f9f9f9", color="#555555"];
   edge [color="#666666"];
 
-  n140721195172656 [label="{ o | data: 0 | grad: 0 }"];
-  n140721195172656_op [label="tanh", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
-  n140721195172656_op -> n140721195172656;
-  n94659161944240 -> n140721195172656_op;
-  n94659161944240 [label="{ n | data: 2 | grad: 0 }"];
-  n94659161944240_op [label="+", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
-  n94659161944240_op -> n94659161944240;
-  n94659161942672 -> n94659161944240_op;
-  n94659161942672 [label="{ (unnamed) | data: -6 | grad: 0 }"];
-  n94659161942672_op [label="+", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
-  n94659161942672_op -> n94659161942672;
-  n94659161942896 -> n94659161942672_op;
-  n94659161942896 [label="{ h1 | data: -6 | grad: 0 }"];
-  n94659161942896_op [label="*", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
-  n94659161942896_op -> n94659161942896;
-  n94659161942448 -> n94659161942896_op;
-  n94659161942448 [label="{ x1 | data: 2 | grad: 0 }"];
-  n94659161942552 -> n94659161942896_op;
-  n94659161942552 [label="{ w1 | data: -3 | grad: 0 }"];
-  n94659161943000 -> n94659161942672_op;
-  n94659161943000 [label="{ h2 | data: 0 | grad: 0 }"];
-  n94659161943000_op [label="*", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
-  n94659161943000_op -> n94659161943000;
-  n94659161943120 -> n94659161943000_op;
-  n94659161943120 [label="{ x2 | data: 0 | grad: 0 }"];
-  n94659161943224 -> n94659161943000_op;
-  n94659161943224 [label="{ w2 | data: 1 | grad: 0 }"];
-  n94659161942776 -> n94659161944240_op;
-  n94659161942776 [label="{ b | data: 8 | grad: 0 }"];
+  n140736361733760 [label="{ o | data: 2 | grad: 0 }"];
+  n140736361733760_op [label="tanh", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
+  n140736361733760_op -> n140736361733760;
+  n94615673886928 -> n140736361733760_op;
+  n94615673886928 [label="{ n | data: 2 | grad: 0 }"];
+  n94615673886928_op [label="+", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
+  n94615673886928_op -> n94615673886928;
+  n94615673886480 -> n94615673886928_op;
+  n94615673886480 [label="{ (unnamed) | data: -6 | grad: 0 }"];
+  n94615673886480_op [label="+", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
+  n94615673886480_op -> n94615673886480;
+  n94615673887824 -> n94615673886480_op;
+  n94615673887824 [label="{ h1 | data: -6 | grad: 0 }"];
+  n94615673887824_op [label="*", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
+  n94615673887824_op -> n94615673887824;
+  n94615673887040 -> n94615673887824_op;
+  n94615673887040 [label="{ x1 | data: 2 | grad: 0 }"];
+  n94615673887144 -> n94615673887824_op;
+  n94615673887144 [label="{ w1 | data: -3 | grad: 0 }"];
+  n94615673887928 -> n94615673886480_op;
+  n94615673887928 [label="{ h2 | data: 0 | grad: 0 }"];
+  n94615673887928_op [label="*", shape=circle, style=filled, fillcolor="#eeeeee", color="#444444"];
+  n94615673887928_op -> n94615673887928;
+  n94615673887600 -> n94615673887928_op;
+  n94615673887600 [label="{ x2 | data: 0 | grad: 0 }"];
+  n94615673887704 -> n94615673887928_op;
+  n94615673887704 [label="{ w2 | data: 1 | grad: 0 }"];
+  n94615673886584 -> n94615673886928_op;
+  n94615673886584 [label="{ b | data: 8 | grad: 0 }"];
 }
 

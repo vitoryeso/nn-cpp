@@ -6,6 +6,9 @@
 #include <cstdint>
 #include <cmath>
 
+#define FIXED_MUL(a, b) ((int32_t)(((int64_t)(a) * (b)) >> 15))
+#define SCALE 32768  // 2^15 => formato Q16.15
+
 using namespace std;
 
 class Value {
@@ -71,24 +74,24 @@ class Value {
       return result;
     }
     Value tanh(void) {
-      Value x(0);
-      Value c1(2, "c1");
-      Value c2(1, "c2");
-      Value o(0, "o");
-      Value h1(0, "h1");
-      Value h2(0, "h2");
+      int32_t x = (int32_t)this->data;
 
-      x = this->data;
-      h1 = c1 * x;
-      h1 = h1.exp();
-      h1 = h1 - c2;
-      h2 = c1 * x;
-      h2 = h2.exp();
-      h2 = h2 + c2;
-      o = h1/h2;
-      Value t(ceil(o.data), {*this}, "tanh");
-      return t;
+      // Limitar o input
+      if (x > (3 * SCALE))  return Value(SCALE, { *this }, "tanh");
+      if (x < (-3 * SCALE)) return Value(-SCALE, { *this }, "tanh");
+
+      int32_t x2  = FIXED_MUL(x, x);                                 // x²
+      int32_t num = FIXED_MUL(x, (27 * SCALE + x2));                 // x*(27 + x²)
+      int32_t den = (27 * SCALE + FIXED_MUL(9 * SCALE, x2));         // (27 + 9x²)
+      int32_t q   = (int32_t)(((int64_t)num << 15) / den);           // divisão ponto fixo Q15
+
+      Value o(q, { *this }, "tanh");
+      o.label = "tanh(" + this->label + ")";
+      cout << "tanh(" << this->data << ") = " << (float)q / SCALE << endl;
+      cout << "o: " << o.data << endl;
+      return o;
     }
+
     // Custom assignment operator to preserve the label
     Value& operator=(const Value& other) {
         // Check for self-assignment
