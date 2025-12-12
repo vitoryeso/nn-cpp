@@ -1,5 +1,6 @@
 from transformers import ViTFeatureExtractor, ViTForImageClassification, Trainer, TrainingArguments
 from datasets import load_dataset
+import matplotlib.pyplot as plt
 
 # Load the dataset
 dataset = load_dataset("huggingface/tiny-imagenet")
@@ -45,4 +46,29 @@ trainer = Trainer(
     eval_dataset=val_dataset
 )
 
+# Define training loss and accuracy tracking
+def save_training_curves(train_losses, train_accuracies, val_accuracies):
+    epochs = range(1, len(train_losses) + 1)
+
+    # Plot Training Losses
+    plt.figure(figsize=(10, 5))
+    plt.plot(epochs, train_losses, label="Training Loss")
+    plt.xlabel("Epochs")
+    plt.ylabel("Loss")
+    plt.title("Training Loss Curve")
+    plt.legend()
+    plt.savefig("training_loss_curve.png")
+
+    # Plot Accuracy (Train and Validation)
+    plt.figure(figsize=(10, 5))
+    plt.plot(epochs, train_accuracies, label="Training Accuracy")
+    plt.plot(epochs, val_accuracies, label="Validation Accuracy")
+    plt.xlabel("Epochs")
+    plt.ylabel("Accuracy")
+    plt.title("Accuracy Curves")
+    plt.legend()
+    plt.savefig("accuracy_curves.png")
+
 trainer.train()
+# Example Dummy Loss/Accuracy tracking history. Link dynamic logging if replacing examples
+save_training_curves([0.9, 0.8,0-etc scenarios]" ;!"sha wi
